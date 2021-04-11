@@ -83,6 +83,9 @@ namespace shopapp.data.Migrations
                     b.Property<string>("City")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ConversationId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
@@ -102,6 +105,12 @@ namespace shopapp.data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("OrderState")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PaymentId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PaymentType")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Phone")

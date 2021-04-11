@@ -175,7 +175,6 @@ C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\appsettin
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\global.json
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\package-lock.json
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\package.json
-C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\shopapp.webui.exe
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\shopapp.webui.deps.json
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\shopapp.webui.runtimeconfig.json
@@ -412,3 +411,8 @@ C:\Users\dbhsoft\Desktop\Eticaret-master\shopapp.webui\obj\Debug\netcoreapp3.1\s
 C:\Users\dbhsoft\Desktop\Eticaret-master\shopapp.webui\obj\Debug\netcoreapp3.1\shopapp.webui.dll
 C:\Users\dbhsoft\Desktop\Eticaret-master\shopapp.webui\obj\Debug\netcoreapp3.1\shopapp.webui.pdb
 C:\Users\dbhsoft\Desktop\Eticaret-master\shopapp.webui\obj\Debug\netcoreapp3.1\shopapp.webui.genruntimeconfig.cache
+C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Checkout.cshtml.g.cs
+C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\Iyzipay.dll
+C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Success.cshtml.g.cs
+C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Orders.cshtml.g.cs

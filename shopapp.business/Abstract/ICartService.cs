@@ -9,5 +9,6 @@ namespace shopapp.business.Abstract
        
          void AddToCart(string userId,int productId,int quantity);//dısarıdan alıcağı değerler
         void DeleteFromCart(string userId, int productId);
+        void ClearCart(int cartId);//cartId bilgisi ile silme işlemi yapalım
     }
 }

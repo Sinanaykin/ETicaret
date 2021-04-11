@@ -10,6 +10,6 @@ namespace shopapp.webui.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
-        public IEnumerable<string> SelectedRoles { get; set; }
+        public IEnumerable<string> SelectedRoles { get; set; } //önce kayıtlar gelir sonra sonra sorgu çalısır
     }
 }
