@@ -35,7 +35,11 @@ namespace shopapp.webui
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+           //adddbcontexte  applicationcontext i vericez.Zaten shopcontextimiz dbcontextden türüyo ,dbcontext imiz içinede applicationcontexti verdik bu sayede veritabnında user,role ve kendi oluşturduğumuz product, category vs. gibi tablolar oluşur migration yapınca
             services.AddDbContext<ApplicationContext>(options=>options.UseSqlite("Data Source=shopDb"));
+            //Identity i tanımlamamız lazım programa.Identity ye kullanıcı bilgisi ve rol  tabloları için olan sınıfı kullanıcaz.
+            //Eğer User classı oluşturmasaydık extra bilgiler için altta User yerine İdentityUser kullanıcaz
+            //addentityframeworkstores içine kullanıcağımız contexti yaz.adddefaulttokenprovidersı da parola resetlemek için gerekli olan  benzersiz sayıyı üreticek yapı dır
             services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
             
             services.Configure<IdentityOptions>(options=>{

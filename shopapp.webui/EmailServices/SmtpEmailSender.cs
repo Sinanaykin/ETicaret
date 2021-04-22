@@ -21,7 +21,7 @@ namespace shopapp.webui.EmailServices
         mailMessage.Body = htmlMessage;
 
         SmtpClient client = new SmtpClient();
-        client.Credentials = new System.Net.NetworkCredential("sinanaykinnn@hotmail.com", "Basketciyim.48");
+        client.Credentials = new System.Net.NetworkCredential("sinanaykinnn@hotmail.com", "Shopapp_1234");
         client.Host = "smtp.office365.com";
         client.Port = 587;
         client.EnableSsl = true;
