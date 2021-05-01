@@ -6,11 +6,12 @@ namespace shopapp.business.Concrete
 {
     public class CartManager : ICartService
     {
-        private ICartRepository _cartRepository;
-        public CartManager(ICartRepository cartRepository)
+        private readonly IUnitOfWork _unitofwork; //artık burda ICartRespositorye göndermek yerine IUnitOfWork e göndermeliyiz
+        public CartManager(IUnitOfWork unitofwork)
         {
-            _cartRepository=cartRepository;
+            _unitofwork=unitofwork; //altta _cartRepository yazan yerleri _unitofwork.Carts ile değiştirdik ve data>concrete de savechanges ları sildiğimiz için burda çağırdık save olarak.Zaten save metodunda savechanges tanımlı
         }
+      
 
         public void AddToCart(string userId, int productId, int quantity)
         {
@@ -33,14 +34,15 @@ namespace shopapp.business.Concrete
                {
                    cart.CartItems[index].Quantity += quantity;
                }
-               _cartRepository.Update(cart);
+               _unitofwork.Carts.Update(cart);
+               _unitofwork.Save();
            
            }
         }
 
         public void ClearCart(int cartId)
         {
-            _cartRepository.ClearCart(cartId);
+             _unitofwork.Carts.ClearCart(cartId);
         }
 
         public void DeleteFromCart(string userId, int productId)
@@ -48,18 +50,19 @@ namespace shopapp.business.Concrete
             var cart=GetCartByUserId(userId);
             if (cart!=null)
             {
-                _cartRepository.DeleteFromCart(cart.Id,productId);
+                 _unitofwork.Carts.DeleteFromCart(cart.Id,productId);
             }
         }
 
         public Cart GetCartByUserId(string userId)
         {
-            return _cartRepository.GetByUserId(userId); //data katmanına gidip bu bilgiyi alıcaz.
+            return _unitofwork.Carts.GetByUserId(userId); //data katmanına gidip bu bilgiyi alıcaz.
         }
 
         public void InitializeCart(string userId)
         {
-            _cartRepository.Create(new Cart(){UserId=userId});
+            _unitofwork.Carts.Create(new Cart(){UserId=userId});
+            _unitofwork.Save();
         }
     }
 }

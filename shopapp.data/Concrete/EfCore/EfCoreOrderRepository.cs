@@ -6,13 +6,20 @@ using shopapp.entity;
 
 namespace shopapp.data.Concrete.EfCore
 {
-    public class EfCoreOrderRepository : EfCoreGenericRepository<Order, ShopContext>, IOrderRepository
+    public class EfCoreOrderRepository : EfCoreGenericRepository<Order>, IOrderRepository
     {
+        public EfCoreOrderRepository(ShopContext context): base(context)
+       {
+           
+       }
+       private ShopContext ShopContext
+       {
+          get {return context as ShopContext; }
+       }
         public List<Order> GetOrders(string userId)
         {
-            using (var context=new ShopContext())
-            {
-                var orders=context.Orders     //Orders tablosundan OrderItems tablusuna gidip ordan Product ı aldık
+           
+                var orders=ShopContext.Orders     //Orders tablosundan OrderItems tablusuna gidip ordan Product ı aldık
                                   .Include(i=>i.OrderItems)
                                   .ThenInclude(i=>i.Product)
                                   .AsQueryable();
@@ -23,7 +30,7 @@ namespace shopapp.data.Concrete.EfCore
 
                 return orders.ToList();
                                   
-            }
+            
         }
     }
 }

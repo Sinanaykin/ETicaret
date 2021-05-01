@@ -7,19 +7,21 @@ namespace shopapp.business.Concrete
 {
     public class OrderManager : IOrderService
     {
-        private IOrderRepository _orderRepository;
-        public OrderManager(IOrderRepository orderRepository)
+       
+       private readonly IUnitOfWork _unitofwork;
+        public OrderManager(IUnitOfWork unitofwork)
         {
-            _orderRepository=orderRepository;
+            _unitofwork=unitofwork;
         }
         public void Create(Order entity) //geri dönüş değeri yok return kullanılmaz
         {
-           _orderRepository.Create(entity);
+           _unitofwork.Orders.Create(entity);
+           _unitofwork.Save();
         }
 
         public List<Order> GetOrders(string userId) //geri dönüş değeri var o yüzden return kullanılır
         {
-            return _orderRepository.GetOrders(userId);
+            return _unitofwork.Orders.GetOrders(userId);
         }
     }
 }

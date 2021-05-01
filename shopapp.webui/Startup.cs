@@ -35,11 +35,19 @@ namespace shopapp.webui
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+           //ShopContext içinde connecionstring bağlaması yapıyoruz. ConnectionStringi  ApplicationContext e de ekliyoruz alttaki.
+         //   services.AddDbContext<ShopContext>(options=>options.UseSqlite(_configuration.GetConnectionString("SqliteConnection")));
+          services.AddDbContext<ShopContext>(options=>options.UseSqlServer(_configuration.GetConnectionString("MsSqlConnection")));
+
+
+
            //adddbcontexte  applicationcontext i vericez.Zaten shopcontextimiz dbcontextden türüyo ,dbcontext imiz içinede applicationcontexti verdik bu sayede veritabnında user,role ve kendi oluşturduğumuz product, category vs. gibi tablolar oluşur migration yapınca
-            services.AddDbContext<ApplicationContext>(options=>options.UseSqlite("Data Source=shopDb"));
+            // services.AddDbContext<ApplicationContext>(options=>options.UseSqlite(_configuration.GetConnectionString("SqliteConnection")));
+             services.AddDbContext<ApplicationContext>(options=>options.UseSqlServer(_configuration.GetConnectionString("MsSqlConnection")));//MsSql e cevirdik Sqlite dan
             //Identity i tanımlamamız lazım programa.Identity ye kullanıcı bilgisi ve rol  tabloları için olan sınıfı kullanıcaz.
             //Eğer User classı oluşturmasaydık extra bilgiler için altta User yerine İdentityUser kullanıcaz
             //addentityframeworkstores içine kullanıcağımız contexti yaz.adddefaulttokenprovidersı da parola resetlemek için gerekli olan  benzersiz sayıyı üreticek yapı dır
+   
             services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
             
             services.Configure<IdentityOptions>(options=>{
@@ -77,17 +85,17 @@ namespace shopapp.webui
                };
  
             });
+             //Alttakileri yorum satırı yapıyoruz onların hepsini tek bir sınıf içinde toplıcaz (unitofwork pattern)
+            // services.AddScoped<ICategoryRepository,EfCoreCategoryRepository>(); 
+            // services.AddScoped<IProductRepository,EfCoreProductRepository>();
+            // services.AddScoped<ICartRepository,EfCoreCartRepository>();
+            // services.AddScoped<IOrderRepository,EfCoreOrderRepository>();
 
-            services.AddScoped<ICategoryRepository,EfCoreCategoryRepository>();
-            services.AddScoped<ICategoryService,CategoryManager>();
-           
-            services.AddScoped<IProductRepository,EfCoreProductRepository>();
+            services.AddScoped<IUnitOfWork,UnitOfWork>(); //yukarıdakilerin hepsini bu sınıflar içinde topladık
+
+            services.AddScoped<ICategoryService,CategoryManager>();        
             services.AddScoped<IProductService,ProductManager>();
-
-            services.AddScoped<ICartRepository,EfCoreCartRepository>();
             services.AddScoped<ICartService,CartManager>();
-
-            services.AddScoped<IOrderRepository,EfCoreOrderRepository>();
             services.AddScoped<IOrderService,OrderManager>();
 
 
@@ -99,7 +107,7 @@ namespace shopapp.webui
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,IConfiguration configuration,UserManager<User> userManager,RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,IConfiguration configuration,UserManager<User> userManager,RoleManager<IdentityRole> roleManager,ICartService cartService)
         {
             app.UseStaticFiles(); //wwwroot
 
@@ -112,7 +120,7 @@ namespace shopapp.webui
 
             if (env.IsDevelopment())
             {
-                SeedDatabase.Seed();
+                
                 app.UseDeveloperExceptionPage();
             }
             
@@ -271,7 +279,7 @@ namespace shopapp.webui
 
             });
         
-            SeedIdentity.Seed(userManager,roleManager,configuration).Wait();
+            SeedIdentity.Seed(userManager,roleManager,cartService,configuration).Wait();
         }
     }
 }

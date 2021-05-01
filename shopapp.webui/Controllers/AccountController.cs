@@ -15,7 +15,7 @@ namespace shopapp.webui.Controllers
     public class AccountController:Controller
     {
         private UserManager<User> _userManager;
-        private SignInManager<User> _signInManager;
+        private SignInManager<User> _signInManager; //Cookie olaylarını yönetir
         private IEmailSender _emailSender;
         
         private ICartService _cartService;
