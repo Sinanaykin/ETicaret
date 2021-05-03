@@ -111,7 +111,7 @@ namespace shopapp.webui
         {
             app.UseStaticFiles(); //wwwroot
 
-            app.UseStaticFiles(new StaticFileOptions
+            app.UseStaticFiles(new StaticFileOptions  //program wwroot u tanır bu yüzden node_modules için, wwwroot içindeymiş gibi alias verek tanıtmalıyız
             {
                 FileProvider=new PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(),"node_modules")),
