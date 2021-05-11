@@ -6619,8 +6619,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dbhsoft\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\dbhsoft\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -6631,13 +6630,9 @@
       "packagesPath": "C:\\Users\\dbhsoft\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\dbhsoft\\Desktop\\shopapp\\shopapp.data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
         "C:\\Users\\dbhsoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"

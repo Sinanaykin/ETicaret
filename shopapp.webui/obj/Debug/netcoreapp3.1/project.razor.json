@@ -14509,6 +14509,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\dbhsoft\\Desktop\\shopapp\\shopapp.webui\\Views\\Home\\GetProductsFromRestApi.cshtml",
+      "TargetPath": "Views\\Home\\GetProductsFromRestApi.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\dbhsoft\\Desktop\\shopapp\\shopapp.webui\\Views\\Admin\\CategoryEdit.cshtml",
       "TargetPath": "Views\\Admin\\CategoryEdit.cshtml",
       "FileKind": "mvc"

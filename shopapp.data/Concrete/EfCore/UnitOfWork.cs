@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using shopapp.data.Abstract;
 
 namespace shopapp.data.Concrete.EfCore
@@ -35,6 +36,11 @@ namespace shopapp.data.Concrete.EfCore
         {
             //yani save i çağırınca _context.savechanges çalışır.
             _context.SaveChanges();
+        }
+
+        public async Task<int> SaveAsync() //web api için asekron halini de ekledik
+        {
+           return await _context.SaveChangesAsync();
         }
     }
 }

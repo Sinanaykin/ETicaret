@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="products"> <!-- id si products olan bir div olusturduk -->
+
+    </div>
+
+    <script>
+        const getProducts=async ()=>{ //getProducts isminde metot olusturduk arrow function ile
+            const response = await fetch ('http://localhos:4200/api/products');//bilgileri alıcağımız adrese talep gönderiyoruz fetch api aracılığı ile
+           const products=await response.json();//gelen response ı json a çeviricez bunları products içinde tutucaz
+
+           //burda cors hatası alıcaz.Çünkü mesela javascript 5005 portunda çalısırken bizim apimi 4200 de çalısıcak bu yüzden portu tanıtmalıyız api projesinde
+
+           setProducts(products);//Gelen products listesini yazıyoruz//[{"productId":"1","name":"samsung s20"},{"productId":"2","name":"samsung s21"}] 
+        }
+        const setProducts = (products) => {//setProducts metodu oluşturucaz gelen products bilgilerini sayfada göstericez
+            const productsDiv= document.getElementById('products');//id si products olan dive (yukarıda tanımladıgımız)ulaşalım burda
+            products.forEach(products => { //bu div içine herbir products listesi içindeki elemanlara ulaşalım ve productsDiv içine aktaralım
+                productsDiv.innerHTML += `
+                 <div>
+                  <p>${product.name}</p>
+                  <p>${product.price}</p>
+                 </div>   
+                 `;
+            });
+        }
+        getProducts();//getProduct ı çağıralım
+    </script>
+</body>
+</html>

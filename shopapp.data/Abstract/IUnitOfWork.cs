@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 namespace shopapp.data.Abstract
 {
@@ -10,7 +11,7 @@ namespace shopapp.data.Abstract
          IOrderRepository Orders {get;}
          IProductRepository Products {get;}
          void Save(); //geri dönüş değeri olmayan save metodunuda eklicez
-    
+          Task<int> SaveAsync(); //web api için asekron halini de ekledik save metodu için
 
     }
 }

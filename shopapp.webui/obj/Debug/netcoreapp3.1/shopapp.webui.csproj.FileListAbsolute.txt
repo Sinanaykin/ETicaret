@@ -430,3 +430,4 @@ C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\runtimes\
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\dbhsoft\Desktop\shopapp\shopapp.webui\obj\Debug\netcoreapp3.1\Razor\Views\Home\GetProductsFromRestApi.cshtml.g.cs

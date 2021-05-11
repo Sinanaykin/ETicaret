@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using shopapp.business.Abstract;
 using shopapp.data.Abstract;
 using shopapp.data.Concrete.EfCore;
@@ -28,6 +29,13 @@ namespace shopapp.business.Concrete
             
         }
 
+        public async Task<Product> CreateAsync(Product entity) //web api için create metodu ekledik bir tane daha ama bu asekron
+        {
+            await _unitofwork.Products.CreateAsync(entity);
+            await _unitofwork.SaveAsync();
+            return entity;
+        }
+
         public void Delete(Product entity)
         {
             //iş kuralları
@@ -35,15 +43,15 @@ namespace shopapp.business.Concrete
             _unitofwork.Save();
         }
 
-        public List<Product> GetAll()
+        public async Task<List<Product>> GetAll()
         {
-            return _unitofwork.Products.GetAll();
+            return await _unitofwork.Products.GetAll();
             
         }
 
-        public Product GetById(int id)
+        public async Task<Product> GetById(int id)
         {
-            return _unitofwork.Products.GetById(id);
+            return await _unitofwork.Products.GetById(id);
         }
 
         public Product GetByIdWithCategories(int id)
@@ -101,6 +109,14 @@ namespace shopapp.business.Concrete
             
         }
 
+        public async Task UpdateAsync(Product entityToUpdate, Product entity)//ilki veritanından seçiceğimiz entity 2.si yeni gelicek entity.
+        {
+        entityToUpdate.Name=entity.Name; //VERİTABANINDAN GELEN NAME ALANINA  BİZİM GÖNDERDİĞİMİZ NAME GÖNDERİCEZ
+        entityToUpdate.Price=entity.Price;
+        entityToUpdate.Description=entity.Description;
+        await _unitofwork.SaveAsync();
+        }
+
 
          public string ErrorMessage {get;set;}
 
@@ -120,6 +136,12 @@ namespace shopapp.business.Concrete
            }
 
            return isValid;
+        }
+
+        public async Task DeleteAsync(Product entity)
+        {
+           _unitofwork.Products.Delete(entity);
+           await _unitofwork.SaveAsync();
         }
     }
 }
